@@ -7,19 +7,21 @@ router.get('/sign-up', function(req,res) {
 
 router.post('/sign-up', function(req, res) {
   var formErrors = [];
-  var name = req.body.name;
+  var username = req.body.username;
   var email = req.body.email;
   var password = req.body.password;
 
-  if(!name) formErrors.push('Please enter a username');
+  if(!username) formErrors.push('Please enter a username');
   if(!email) formErrors.push('Please enter your email');
   if(!password) formErrors.push('Please enter a password');
 
   req.flash('error_msg', formErrors);
+
   if(formErrors.length > 0) {
     res.render('sign-up', {message: formErrors, formData: req.body});
     return;
   }
+
   res.redirect('/')
 });
 
