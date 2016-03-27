@@ -4,13 +4,16 @@ var bodyParser = require('body-parser');
 var flash = require('connect-flash');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-
+var mongoose = require('mongoose');
 var app = express();
 
 app.engine('.hbs', exphbs({extname: '.hbs', defaultLayout:'layout'}));
 app.set('view engine', '.hbs');
 app.use(express.static('public'));
 app.use(cookieParser());
+
+// mongodb setup
+mongoose.connect('mongodb://localhost/test');
 
 // bodyParser
 app.use(bodyParser.json());
