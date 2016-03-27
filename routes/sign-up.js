@@ -16,7 +16,11 @@ router.post('/sign-up', function(req, res) {
   if(!password) formErrors.push('Please enter a password');
 
   req.flash('error_msg', formErrors);
-  res.render('sign-up', {message: formErrors, formData: req.body});
+  if(formErrors.length > 0) {
+    res.render('sign-up', {message: formErrors, formData: req.body});
+    return;
+  }
+  res.redirect('/')
 });
 
 module.exports = router;
