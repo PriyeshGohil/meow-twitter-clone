@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/PriyeshGohil/meow-twitter-clone#readme",
   "devDependencies": {
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.1",
