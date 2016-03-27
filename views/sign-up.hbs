@@ -1,16 +1,19 @@
 <div class="container">
   <h1>Sign Up!</h1>
-  <form>
+  {{#each message}}
+    <div class="alert alert-danger" role="alert">{{this}}</div>
+  {{/each}}
+  <form method="post" action='/sign-up'>
     <fieldset class="form-group">
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name">
+      <input type="text" class="form-control" value='{{formData.name}}'  name='name' placeholder="Name">
     </fieldset>
 
     <fieldset class="form-group">
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="E-mail">
+      <input type="text" class="form-control"  value='{{formData.email}}' name='email' placeholder="E-mail">
     </fieldset>
 
     <fieldset class="form-group">
-      <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Password">
+      <input type="password" class="form-control" name='password' placeholder="Password">
     </fieldset>
 
     <input class="btn btn-primary" type="submit" value="Submit">

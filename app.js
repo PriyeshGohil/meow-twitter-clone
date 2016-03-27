@@ -1,12 +1,30 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
+var bodyParser = require('body-parser');
+var flash = require('connect-flash');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
 var app = express();
 
 app.engine('.hbs', exphbs({extname: '.hbs', defaultLayout:'layout'}));
 app.set('view engine', '.hbs');
 app.use(express.static('public'));
+app.use(cookieParser());
 
+// bodyParser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+// sessions
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}));
+
+// flash messages
+app.use(flash());
 
 // routes
 var signUpRoute = require('./routes/sign-up');
